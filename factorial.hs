@@ -17,3 +17,10 @@ module Factorial where
   helper :: Int -> Int -> Int
   helper acc 0 = acc
   helper acc n = helper (acc * n) (n - 1)
+
+  facTail :: Int -> Int
+  facTail n = facAux n 1
+
+  facAux :: Int -> Int -> Int
+  facAux 0 acc = acc
+  facAux n acc = facAux (n - 1) (acc * n)

@@ -11,7 +11,7 @@ module Fib where
     | n == 1 = 1
     | n == (-1) = 1
     | n > 0 = helper n 1 0
-    | otherwise = helper n (-1) 0
+    | otherwise = helper n n (n + 1)
 
   helper :: Integer -> Integer -> Integer -> Integer
   helper n res prev
@@ -19,7 +19,7 @@ module Fib where
     | n == 1 = res
     | n == (-1) = res
     | n > 0 = helper (n - 1) (res + prev) res
-    | otherwise = helper (n + 1) (res - prev) res
+    | otherwise = helper (n + 1) (res - prev) (prev + 1)
 
   fibonacci :: Integer -> Integer
   fibonacci 0 = 0
