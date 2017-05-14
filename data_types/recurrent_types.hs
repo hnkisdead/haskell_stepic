@@ -12,10 +12,21 @@ toList = foldr Cons Nil
 
 -- *************************************** --
 
-data Tree a = Leaf a | Node (Tree a) (Tree a)
+data Tree a = Leaf a | Node (Tree a) (Tree a) deriving Show
 
 height :: Tree a -> Int
-height = undefined
+height (Leaf _) = 0
+height (Node t1 t2) = 1 + max (height t1) (height t2)
 
 size :: Tree a -> Int
-size = undefined
+size (Leaf _) = 1
+size (Node t1 t2) = 1 + size t1 + size t2
+
+avg :: Tree Int -> Int
+avg t =
+    let (c,s) = go t
+    in s `div` c
+  where
+    go :: Tree Int -> (Int,Int)
+    go (Leaf value) = (value, 1)
+    go (Node t1 t2) = undefined
